@@ -1,0 +1,12 @@
+{
+  "name": "mcp-builder",
+  "version": "1.0.0",
+  "description": "引導開發高品質 MCP Server，涵蓋工具設計、TypeScript/Python 實作、測試與評估",
+  "author": { "name": "knew-inventai", "email": "knew@chtinventai.com" },
+  "license": "MIT",
+  "_agentkit": {
+    "type": "skill",
+    "tags": ["agentkit", "meta", "mcp", "builder", "developer"],
+    "compatible": ["claude", "openai", "gemini"]
+  }
+}

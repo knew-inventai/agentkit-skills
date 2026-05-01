@@ -1,0 +1,39 @@
+{
+  "name": "agentkit-skills",
+  "owner": {
+    "name": "AgentKit"
+  },
+  "description": "Inventai AI Skill 集合",
+  "plugins": [
+    {
+      "name": "code-reviewer",
+      "source": "./code-reviewer",
+      "description": "自動 code review，找出潛在 bug、安全問題與可讀性改善點",
+      "version": "1.0.0"
+    },
+    {
+      "name": "mcp-builder",
+      "source": "./mcp-builder",
+      "description": "引導開發高品質 MCP Server，涵蓋工具設計、TypeScript/Python 實作、測試與評估",
+      "version": "1.0.0"
+    },
+    {
+      "name": "plugin-dev",
+      "source": "./plugin-dev",
+      "description": "引導使用者設計並開發 AgentKit Plugin，產出完整的 plugin.json 與說明文件",
+      "version": "1.0.0"
+    },
+    {
+      "name": "prompt-designer",
+      "source": "./prompt-designer",
+      "description": "引導使用者依照 prompt engineering 最佳實踐設計高品質、可重用的 Prompt 模板",
+      "version": "1.0.0"
+    },
+    {
+      "name": "skill-creator",
+      "source": "./skill-creator",
+      "description": "引導使用者從零設計並撰寫一個符合 AgentKit 規範的 Skill",
+      "version": "1.0.0"
+    }
+  ]
+}

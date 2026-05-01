@@ -1,0 +1,12 @@
+{
+  "name": "code-reviewer",
+  "version": "1.0.0",
+  "description": "自動 code review，找出潛在 bug、安全問題與可讀性改善點",
+  "author": { "name": "knew-inventai", "email": "knew@chtinventai.com" },
+  "license": "MIT",
+  "_agentkit": {
+    "type": "skill",
+    "tags": ["review", "quality", "debugging"],
+    "compatible": ["claude", "openai", "gemini"]
+  }
+}

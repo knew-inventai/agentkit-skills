@@ -1,0 +1,12 @@
+{
+  "name": "skill-creator",
+  "version": "1.0.0",
+  "description": "引導使用者從零設計並撰寫一個符合 AgentKit 規範的 Skill",
+  "author": { "name": "knew-inventai", "email": "knew@chtinventai.com" },
+  "license": "MIT",
+  "_agentkit": {
+    "type": "skill",
+    "tags": ["agentkit", "meta", "skill", "creator"],
+    "compatible": ["claude", "openai", "gemini"]
+  }
+}

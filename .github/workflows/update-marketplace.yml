@@ -1,0 +1,59 @@
+name: Update Claude Code Marketplace
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '.claude-plugin/marketplace.json'
+      - 'README.md'
+
+jobs:
+  update-marketplace:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rebuild marketplace.json
+        run: |
+          node - << 'SCRIPT'
+          const fs = require('fs');
+          const path = require('path');
+
+          const existing = JSON.parse(fs.readFileSync('.claude-plugin/marketplace.json', 'utf8'));
+
+          // 掃描所有含 plugin.json 的子目錄
+          const plugins = fs.readdirSync('.')
+            .filter(d => {
+              if (d.startsWith('.') || d.startsWith('_')) return false;
+              const stat = fs.statSync(d);
+              if (!stat.isDirectory()) return false;
+              return fs.existsSync(path.join(d, 'plugin.json'));
+            })
+            .map(d => {
+              const manifest = JSON.parse(fs.readFileSync(path.join(d, 'plugin.json'), 'utf8'));
+              return {
+                name: manifest.name,
+                source: `./${d}`,
+                description: manifest.description || '',
+                version: manifest.version
+              };
+            })
+            .sort((a, b) => a.name.localeCompare(b.name));
+
+          existing.plugins = plugins;
+          fs.writeFileSync(
+            '.claude-plugin/marketplace.json',
+            JSON.stringify(existing, null, 2) + '\n'
+          );
+          console.log(`Updated marketplace.json with ${plugins.length} plugins`);
+          SCRIPT
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .claude-plugin/marketplace.json
+          git diff --cached --quiet || git commit -m "chore: update marketplace.json"
+          git push
