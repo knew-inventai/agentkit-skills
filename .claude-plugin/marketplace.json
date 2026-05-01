@@ -18,6 +18,12 @@
       "version": "1.0.0"
     },
     {
+      "name": "package-creator",
+      "source": "./package-creator",
+      "description": "引導使用者將現有內容封裝成 AgentKit 可接受的格式（plugin.json + 主體檔案），並產出可直接提交 PR 的完整目錄結構",
+      "version": "1.0.0"
+    },
+    {
       "name": "prompt-designer",
       "source": "./prompt-designer",
       "description": "引導使用者依照 prompt engineering 最佳實踐設計高品質、可重用的 Prompt 模板",
