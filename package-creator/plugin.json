@@ -1,0 +1,12 @@
+{
+  "name": "package-creator",
+  "version": "1.0.0",
+  "description": "引導使用者將現有內容封裝成 AgentKit 可接受的格式（plugin.json + 主體檔案），並產出可直接提交 PR 的完整目錄結構",
+  "author": { "name": "knew-inventai", "email": "knew@chtinventai.com" },
+  "license": "MIT",
+  "_agentkit": {
+    "type": "skill",
+    "tags": ["agentkit", "meta", "packaging", "pr", "manifest"],
+    "compatible": ["claude", "openai", "gemini"]
+  }
+}
