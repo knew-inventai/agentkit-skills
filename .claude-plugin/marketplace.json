@@ -18,12 +18,6 @@
       "version": "1.0.0"
     },
     {
-      "name": "plugin-dev",
-      "source": "./plugin-dev",
-      "description": "引導使用者設計並開發 AgentKit Plugin，產出完整的 plugin.json 與說明文件",
-      "version": "1.0.0"
-    },
-    {
       "name": "prompt-designer",
       "source": "./prompt-designer",
       "description": "引導使用者依照 prompt engineering 最佳實踐設計高品質、可重用的 Prompt 模板",
