@@ -1,0 +1,66 @@
+name: Auto Release
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '.claude-plugin/marketplace.json'
+      - 'README.md'
+
+jobs:
+  auto-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Create releases for updated packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Find package directories changed in this push
+          # Handle first commit edge case (no HEAD~1)
+          if git rev-parse HEAD~1 &>/dev/null; then
+            changed=$(git diff --name-only HEAD~1 HEAD)
+          else
+            changed=$(git ls-tree --name-only HEAD)
+          fi
+
+          dirs=$(echo "$changed" \
+            | grep '/' \
+            | cut -d'/' -f1 \
+            | sort -u \
+            | grep -v '^\.' \
+            | grep -v '^_' \
+            | grep -v '^scripts')
+
+          if [ -z "$dirs" ]; then
+            echo "No package directories changed, skipping."
+            exit 0
+          fi
+
+          for dir in $dirs; do
+            manifest="$dir/plugin.json"
+            if [ ! -f "$manifest" ]; then
+              echo "Skipping $dir (no plugin.json)"
+              continue
+            fi
+
+            name=$(node -e "const m=require('./$manifest'); process.stdout.write(m.name)")
+            version=$(node -e "const m=require('./$manifest'); process.stdout.write(m.version)")
+            tag="${name}@${version}"
+
+            if gh release view "$tag" &>/dev/null 2>&1; then
+              echo "Release $tag already exists, skipping."
+            else
+              echo "Creating release $tag ..."
+              gh release create "$tag" \
+                --title "$name v$version" \
+                --notes "Auto-generated release for $name v$version" \
+                --target main
+              echo "Created: $tag"
+            fi
+          done
