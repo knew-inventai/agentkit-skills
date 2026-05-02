@@ -12,6 +12,12 @@
       "version": "1.0.0"
     },
     {
+      "name": "hello-world",
+      "source": "./hello-world",
+      "description": "CI 驗證測試用 skill，將於 PR 通過後刪除",
+      "version": "1.0.0"
+    },
+    {
       "name": "mcp-builder",
       "source": "./mcp-builder",
       "description": "引導開發高品質 MCP Server，涵蓋工具設計、TypeScript/Python 實作、測試與評估",
