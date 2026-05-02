@@ -1,0 +1,12 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "CI 驗證測試用 skill，將於 PR 通過後刪除",
+  "author": { "name": "knew-inventai", "email": "knew@chtinventai.com" },
+  "license": "MIT",
+  "_agentkit": {
+    "type": "skill",
+    "tags": ["test"],
+    "compatible": ["claude"]
+  }
+}
