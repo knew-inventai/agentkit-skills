@@ -6,6 +6,7 @@ repos:
       - id: check-json
       - id: pretty-format-json
         args: [--autofix, --indent=2]
+        files: plugin\.json$
       - id: check-added-large-files
         args: [--maxkb=100]
       - id: end-of-file-fixer

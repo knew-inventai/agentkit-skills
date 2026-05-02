@@ -57,7 +57,7 @@ def validate(pkg_dir: Path) -> list[str]:
         )
 
     # author.name required
-    author = m.get("author", {})
+    author = m["author"]
     if not isinstance(author, dict) or not author.get("name"):
         errors.append(
             f"{manifest_path}: 'author' must be an object with at least 'name'"
@@ -65,6 +65,9 @@ def validate(pkg_dir: Path) -> list[str]:
 
     # _agentkit.type
     agentkit = m.get("_agentkit", {})
+    if not isinstance(agentkit, dict):
+        errors.append(f"{manifest_path}: '_agentkit' must be an object")
+        return errors
     pkg_type = agentkit.get("type", "")
     if pkg_type not in VALID_TYPES:
         errors.append(
