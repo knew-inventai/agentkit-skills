@@ -13,7 +13,7 @@ from pathlib import Path
 REQUIRED_FIELDS = ["name", "version", "description", "author", "license", "_agentkit"]
 VALID_TYPES = {"skill", "prompt", "mcp", "plugin"}
 KEBAB_RE = re.compile(r"^[a-z][a-z0-9-]+$")
-SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+$")
+SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$")
 # Body file required per type; plugin uses plugin.json itself (no separate body)
 BODY_FILE: dict[str, str] = {
     "skill": "SKILL.md",
