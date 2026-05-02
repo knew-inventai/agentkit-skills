@@ -29,13 +29,15 @@ jobs:
             changed=$(git ls-tree --name-only HEAD)
           fi
 
+          # || true: grep returns exit 1 when no matches, which kills bash -e
           dirs=$(echo "$changed" \
             | grep '/' \
             | cut -d'/' -f1 \
             | sort -u \
             | grep -v '^\.' \
             | grep -v '^_' \
-            | grep -v '^scripts')
+            | grep -v '^scripts' \
+            || true)
 
           if [ -z "$dirs" ]; then
             echo "No package directories changed, skipping."
