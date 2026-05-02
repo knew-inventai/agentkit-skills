@@ -32,6 +32,7 @@ def sync_package(
         headers={
             "Content-Type": "application/json",
             "Authorization": f"Bearer {secret}",
+            "User-Agent": "agentkit-sync/1.0",
         },
         method="POST",
     )
