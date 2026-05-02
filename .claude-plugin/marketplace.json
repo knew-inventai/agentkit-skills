@@ -15,7 +15,7 @@
       "name": "hello-world",
       "source": "./hello-world",
       "description": "CI 驗證測試用 skill，將於 PR 通過後刪除",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     {
       "name": "mcp-builder",
