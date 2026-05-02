@@ -14,6 +14,7 @@ REQUIRED_FIELDS = ["name", "version", "description", "author", "license", "_agen
 VALID_TYPES = {"skill", "prompt", "mcp", "plugin"}
 KEBAB_RE = re.compile(r"^[a-z][a-z0-9-]+$")
 SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$")
+DEP_RE = re.compile(r"^(skill|prompt|mcp|plugin)/[a-z0-9-]+@\d+\.\d+\.\d+$")
 # Body file required per type; plugin uses plugin.json itself (no separate body)
 BODY_FILE: dict[str, str] = {
     "skill": "SKILL.md",
@@ -81,6 +82,32 @@ def validate(pkg_dir: Path) -> list[str]:
     tags = agentkit.get("tags", [])
     if not isinstance(tags, list) or len(tags) == 0:
         errors.append(f"{manifest_path}: '_agentkit.tags' must be a non-empty array")
+
+    # _agentkit.dependencies: optional, plugin only
+    deps = agentkit.get("dependencies")
+    if deps is not None:
+        if pkg_type != "plugin":
+            errors.append(
+                f"{manifest_path}: '_agentkit.dependencies' is only allowed for type 'plugin'"
+            )
+        elif not isinstance(deps, list):
+            errors.append(f"{manifest_path}: '_agentkit.dependencies' must be an array")
+        elif len(deps) > 20:
+            errors.append(
+                f"{manifest_path}: '_agentkit.dependencies' exceeds max 20 items"
+            )
+        else:
+            seen: set[str] = set()
+            for dep in deps:
+                if not isinstance(dep, str) or not DEP_RE.match(dep):
+                    errors.append(
+                        f"{manifest_path}: invalid dependency '{dep}' "
+                        f"(expected 'type/name@x.y.z')"
+                    )
+                elif dep in seen:
+                    errors.append(f"{manifest_path}: duplicate dependency '{dep}'")
+                else:
+                    seen.add(dep)
 
     return errors
 
