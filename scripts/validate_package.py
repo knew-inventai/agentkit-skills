@@ -83,14 +83,10 @@ def validate(pkg_dir: Path) -> list[str]:
     if not isinstance(tags, list) or len(tags) == 0:
         errors.append(f"{manifest_path}: '_agentkit.tags' must be a non-empty array")
 
-    # _agentkit.dependencies: optional, plugin only
+    # _agentkit.dependencies: optional, any type
     deps = agentkit.get("dependencies")
     if deps is not None:
-        if pkg_type != "plugin":
-            errors.append(
-                f"{manifest_path}: '_agentkit.dependencies' is only allowed for type 'plugin'"
-            )
-        elif not isinstance(deps, list):
+        if not isinstance(deps, list):
             errors.append(f"{manifest_path}: '_agentkit.dependencies' must be an array")
         elif len(deps) > 20:
             errors.append(
