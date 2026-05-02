@@ -1,12 +1,23 @@
 {
-  "name": "code-reviewer",
-  "version": "1.0.0",
-  "description": "自動 code review，找出潛在 bug、安全問題與可讀性改善點",
-  "author": { "name": "knew-inventai", "email": "knew@chtinventai.com" },
-  "license": "MIT",
   "_agentkit": {
-    "type": "skill",
-    "tags": ["review", "quality", "debugging"],
-    "compatible": ["claude", "openai", "gemini"]
-  }
+    "compatible": [
+      "claude",
+      "openai",
+      "gemini"
+    ],
+    "tags": [
+      "review",
+      "quality",
+      "debugging"
+    ],
+    "type": "skill"
+  },
+  "author": {
+    "email": "knew@chtinventai.com",
+    "name": "knew-inventai"
+  },
+  "description": "\u81ea\u52d5 code review\uff0c\u627e\u51fa\u6f5b\u5728 bug\u3001\u5b89\u5168\u554f\u984c\u8207\u53ef\u8b80\u6027\u6539\u5584\u9ede",
+  "license": "MIT",
+  "name": "code-reviewer",
+  "version": "1.0.0"
 }

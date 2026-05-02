@@ -1,13 +1,12 @@
----
-name: mcp-builder
-description: Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).
----
+______________________________________________________________________
+
+## name: mcp-builder description: Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).
 
 # MCP Server Development Guide
 
 Create MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. The quality of an MCP server is measured by how well it enables LLMs to accomplish real-world tasks.
 
----
+______________________________________________________________________
 
 ## Phase 1: Deep Research and Planning
 
@@ -33,7 +32,7 @@ Error messages should guide agents toward solutions with specific suggestions an
 - **Python SDK**: `https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md`
 - **MCP Spec**: `https://modelcontextprotocol.io/sitemap.xml` then fetch relevant pages with `.md` suffix
 
----
+______________________________________________________________________
 
 ## Phase 2: Implementation
 
@@ -54,6 +53,7 @@ my-mcp-server/
 For each tool:
 
 **Input Schema (Zod):**
+
 ```typescript
 const MyToolInput = z.object({
   query: z.string().describe("Search query"),
@@ -62,6 +62,7 @@ const MyToolInput = z.object({
 ```
 
 **Tool Registration:**
+
 ```typescript
 server.registerTool("search_items", {
   description: "Search for items matching a query",
@@ -77,6 +78,7 @@ server.registerTool("search_items", {
 ```
 
 **Tool Annotations:**
+
 - `readOnlyHint`: true/false
 - `destructiveHint`: true/false
 - `idempotentHint`: true/false
@@ -96,7 +98,7 @@ try {
 }
 ```
 
----
+______________________________________________________________________
 
 ## Phase 3: Review and Test
 
@@ -112,13 +114,14 @@ python -m py_compile your_server.py
 ```
 
 Code quality checklist:
+
 - [ ] No duplicated code
 - [ ] Consistent error handling
 - [ ] Full type coverage
 - [ ] Clear tool descriptions
 - [ ] Pagination support where applicable
 
----
+______________________________________________________________________
 
 ## Phase 4: Create Evaluations
 
@@ -138,7 +141,7 @@ Create 10 evaluation questions to test whether LLMs can effectively use your MCP
 </evaluation>
 ```
 
----
+______________________________________________________________________
 
 ## mcp-config.json format (for Claude Code / Cursor)
 

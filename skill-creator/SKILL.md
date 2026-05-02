@@ -1,7 +1,6 @@
----
-name: skill-creator
-description: Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
----
+______________________________________________________________________
+
+## name: skill-creator description: Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
 
 # Skill Creator
 
@@ -21,9 +20,9 @@ At a high level, the process of creating a skill goes like this:
 Start by understanding the user's intent. The current conversation might already contain a workflow the user wants to capture.
 
 1. What should this skill enable Claude to do?
-2. When should this skill trigger? (what user phrases/contexts)
-3. What's the expected output format?
-4. Should we set up test cases to verify the skill works?
+1. When should this skill trigger? (what user phrases/contexts)
+1. What's the expected output format?
+1. Should we set up test cases to verify the skill works?
 
 ## Interview and Research
 
@@ -53,13 +52,15 @@ skill-name/
 ### Progressive Disclosure
 
 Skills use a three-level loading system:
+
 1. **Metadata** (name + description) — Always in context (~100 words)
-2. **SKILL.md body** — In context whenever skill triggers (<500 lines ideal)
-3. **Bundled resources** — As needed (unlimited)
+1. **SKILL.md body** — In context whenever skill triggers (\<500 lines ideal)
+1. **Bundled resources** — As needed (unlimited)
 
 ### Writing Patterns
 
 **Defining output formats:**
+
 ```markdown
 ## Report structure
 ALWAYS use this exact template:
@@ -70,6 +71,7 @@ ALWAYS use this exact template:
 ```
 
 **Examples pattern:**
+
 ```markdown
 ## Commit message format
 Input: Added user authentication with JWT tokens
@@ -106,9 +108,9 @@ Save test cases to `evals/evals.json`:
 The description field in SKILL.md frontmatter is the primary triggering mechanism. After creating a skill, optimize the description for better triggering accuracy:
 
 1. Generate 20 eval queries (mix of should-trigger and should-not-trigger)
-2. Review with user
-3. Run optimization loop
-4. Apply the best description
+1. Review with user
+1. Run optimization loop
+1. Apply the best description
 
 ### How skill triggering works
 
@@ -117,9 +119,9 @@ Skills appear in Claude's `available_skills` list with their name + description.
 ## The core loop
 
 1. Figure out what the skill is about
-2. Draft or edit the skill
-3. Run claude-with-access-to-the-skill on test prompts
-4. Evaluate outputs with the user
-5. Repeat until satisfied
+1. Draft or edit the skill
+1. Run claude-with-access-to-the-skill on test prompts
+1. Evaluate outputs with the user
+1. Repeat until satisfied
 
 > Source: [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/skill-creator)

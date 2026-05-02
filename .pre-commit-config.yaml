@@ -42,3 +42,4 @@ repos:
         pass_filenames: true
         # Only trigger when files inside a package subdirectory change
         files: ^[^./][^/]*/
+        exclude: ^scripts/
