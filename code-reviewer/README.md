@@ -5,12 +5,14 @@
 ## 使用方式
 
 ### Claude Code（marketplace）
+
 ```shell
 /plugin install code-reviewer@agentkit-skills
 /code-reviewer
 ```
 
 ### 手動安裝（curl）
+
 ```bash
 # Claude Code 全域
 curl -fsSL https://raw.githubusercontent.com/knew-inventai/agentkit-skills/main/code-reviewer/SKILL.md \

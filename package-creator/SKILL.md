@@ -1,7 +1,6 @@
----
-name: package-creator
-description: Package existing content into AgentKit-compatible format (plugin.json + main file + README) ready for PR submission. Use when a user wants to manually submit a PR to AgentKit, has an existing skill/prompt/MCP config/plugin and needs it packaged correctly, or is unsure how to structure their AgentKit package.
----
+______________________________________________________________________
+
+## name: package-creator description: Package existing content into AgentKit-compatible format (plugin.json + main file + README) ready for PR submission. Use when a user wants to manually submit a PR to AgentKit, has an existing skill/prompt/MCP config/plugin and needs it packaged correctly, or is unsure how to structure their AgentKit package.
 
 # AgentKit Package Creator
 
@@ -23,11 +22,11 @@ If they already have content, ask them to share it so you can determine the type
 Ask for (or infer from their content):
 
 1. **Name** — Unique identifier, `kebab-case`, lowercase, no spaces (e.g. `my-code-reviewer`)
-2. **Description** — One sentence, under 100 characters
-3. **Author** — GitHub username or name
-4. **Tags** — 2–5 comma-separated keywords (e.g. `review, typescript, security`)
-5. **Compatible platforms** — Which AI platforms it supports: `claude`, `openai`, `gemini` (default: `claude`)
-6. **Version** — Start with `1.0.0` unless updating an existing package
+1. **Description** — One sentence, under 100 characters
+1. **Author** — GitHub username or name
+1. **Tags** — 2–5 comma-separated keywords (e.g. `review, typescript, security`)
+1. **Compatible platforms** — Which AI platforms it supports: `claude`, `openai`, `gemini` (default: `claude`)
+1. **Version** — Start with `1.0.0` unless updating an existing package
 
 If any field is unclear, suggest a reasonable default and ask for confirmation rather than blocking.
 
@@ -38,6 +37,7 @@ Produce all required files based on the type. Show each file in a clearly labele
 ### For a Skill
 
 **`plugin.json`**
+
 ```json
 {
   "name": "<name>",
@@ -54,39 +54,44 @@ Produce all required files based on the type. Show each file in a clearly labele
 ```
 
 **`SKILL.md`** — Use or refine the user's existing content. Structure it with:
+
 - A YAML frontmatter block (`name`, `description`)
 - Clear step-by-step instructions in imperative form
 - Explain the *why* behind each step, not just the *what*
 - Keep under 500 lines
 
 **`README.md`** (recommended)
+
 - Installation command: `/plugin install <name>@agentkit-skills`
 - 2–3 sentence description
 - Example trigger phrases
 - Any prerequisites
 
----
+______________________________________________________________________
 
 ### For a Prompt
 
 **`plugin.json`** — Same structure as Skill, with `"type": "prompt"`
 
 **`PROMPT.md`** — Use or refine the user's content. A prompt template should be:
+
 - Self-contained (no external references needed to use it)
 - Clear about when/how to apply it
 - Include usage examples if relevant
 
 **`README.md`** (recommended)
+
 - How to apply the prompt (paste into CLAUDE.md, system prompt, etc.)
 - What behavior it produces
 
----
+______________________________________________________________________
 
 ### For an MCP Server
 
 **`plugin.json`** — Same structure, with `"type": "mcp"`
 
 **`mcp-config.json`** — Validate and format as:
+
 ```json
 {
   "mcpServers": {
@@ -100,7 +105,9 @@ Produce all required files based on the type. Show each file in a clearly labele
   }
 }
 ```
+
 For HTTP-based MCP servers:
+
 ```json
 {
   "mcpServers": {
@@ -116,15 +123,17 @@ For HTTP-based MCP servers:
 ```
 
 **`README.md`** (recommended)
+
 - How to set required environment variables / tokens
 - List of available tools/capabilities
 - Where to obtain credentials
 
----
+______________________________________________________________________
 
 ### For a Plugin
 
 **`plugin.json`** — Include manifest fields plus `commands` array:
+
 ```json
 {
   "name": "<name>",
@@ -148,11 +157,12 @@ For HTTP-based MCP servers:
 ```
 
 **`README.md`** (recommended)
+
 - Installation command: `/plugin install <name>@agentkit-plugins`
 - List of available slash commands with descriptions
 - Usage examples
 
----
+______________________________________________________________________
 
 ## Step 4: Validate
 

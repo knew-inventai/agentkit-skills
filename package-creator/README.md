@@ -27,6 +27,6 @@
 每次執行會產出：
 
 1. `plugin.json` — 完整 manifest
-2. 主體檔案（`SKILL.md` / `PROMPT.md` / `mcp-config.json` / `plugin.json` commands）
-3. `README.md` — 安裝與使用說明
-4. PR 提交指引（目標 repo、branch 名稱、PR 標題與內文）
+1. 主體檔案（`SKILL.md` / `PROMPT.md` / `mcp-config.json` / `plugin.json` commands）
+1. `README.md` — 安裝與使用說明
+1. PR 提交指引（目標 repo、branch 名稱、PR 標題與內文）

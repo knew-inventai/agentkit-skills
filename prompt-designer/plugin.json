@@ -1,12 +1,24 @@
 {
-  "name": "prompt-designer",
-  "version": "1.0.0",
-  "description": "引導使用者依照 prompt engineering 最佳實踐設計高品質、可重用的 Prompt 模板",
-  "author": { "name": "knew-inventai", "email": "knew@chtinventai.com" },
-  "license": "MIT",
   "_agentkit": {
-    "type": "skill",
-    "tags": ["agentkit", "meta", "prompt", "designer"],
-    "compatible": ["claude", "openai", "gemini"]
-  }
+    "compatible": [
+      "claude",
+      "openai",
+      "gemini"
+    ],
+    "tags": [
+      "agentkit",
+      "meta",
+      "prompt",
+      "designer"
+    ],
+    "type": "skill"
+  },
+  "author": {
+    "email": "knew@chtinventai.com",
+    "name": "knew-inventai"
+  },
+  "description": "\u5f15\u5c0e\u4f7f\u7528\u8005\u4f9d\u7167 prompt engineering \u6700\u4f73\u5be6\u8e10\u8a2d\u8a08\u9ad8\u54c1\u8cea\u3001\u53ef\u91cd\u7528\u7684 Prompt \u6a21\u677f",
+  "license": "MIT",
+  "name": "prompt-designer",
+  "version": "1.0.0"
 }

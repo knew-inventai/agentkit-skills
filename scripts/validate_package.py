@@ -52,16 +52,12 @@ def validate(pkg_dir: Path) -> list[str]:
 
     # version: SemVer
     if not SEMVER_RE.match(str(m["version"])):
-        errors.append(
-            f"{manifest_path}: 'version' must be SemVer x.y.z, got '{m['version']}'"
-        )
+        errors.append(f"{manifest_path}: 'version' must be SemVer x.y.z, got '{m['version']}'")
 
     # author.name required
     author = m["author"]
     if not isinstance(author, dict) or not author.get("name"):
-        errors.append(
-            f"{manifest_path}: 'author' must be an object with at least 'name'"
-        )
+        errors.append(f"{manifest_path}: 'author' must be an object with at least 'name'")
 
     # _agentkit.type
     agentkit = m.get("_agentkit", {})
@@ -78,8 +74,7 @@ def validate(pkg_dir: Path) -> list[str]:
         body = pkg_dir / BODY_FILE[pkg_type]
         if not body.exists():
             errors.append(
-                f"{pkg_dir}: missing body file '{BODY_FILE[pkg_type]}' "
-                f"for type '{pkg_type}'"
+                f"{pkg_dir}: missing body file '{BODY_FILE[pkg_type]}' for type '{pkg_type}'"
             )
 
     # _agentkit.tags: non-empty list
