@@ -14,11 +14,9 @@ REQUIRED_FIELDS = ["name", "version", "description", "author", "license", "_agen
 VALID_TYPES = {"skill", "agent", "mcp", "plugin"}
 KEBAB_RE = re.compile(r"^[a-z][a-z0-9-]+$")
 SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$")
-DEP_RE = re.compile(r"^(skill|agent|mcp|plugin)/[a-z0-9-]+@\d+\.\d+\.\d+$")
 # Body file required per type; plugin uses plugin.json itself (no separate body)
 BODY_FILE: dict[str, str] = {
     "skill": "SKILL.md",
-    "prompt": "PROMPT.md",
     "mcp": "mcp-config.json",
 }
 
