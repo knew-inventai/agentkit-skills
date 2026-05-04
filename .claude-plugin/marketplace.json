@@ -18,6 +18,12 @@
       "version": "1.0.0"
     },
     {
+      "name": "deepflow-backend-test",
+      "source": "./deepflow-backend-test",
+      "description": "讓Agent可以透過./kubeops.sh test去執行backend測試",
+      "version": "1.0.0"
+    },
+    {
       "name": "hello-world",
       "source": "./hello-world",
       "description": "CI 驗證測試用 skill，將於 PR 通過後刪除",
