@@ -12,6 +12,12 @@
       "version": "1.0.0"
     },
     {
+      "name": "deepflow-backend-dev",
+      "source": "./deepflow-backend-dev",
+      "description": "讓Agent在deepflow開發時可以自動調用backend-devsapce作為runtime",
+      "version": "1.0.0"
+    },
+    {
       "name": "hello-world",
       "source": "./hello-world",
       "description": "CI 驗證測試用 skill，將於 PR 通過後刪除",
