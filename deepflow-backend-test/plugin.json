@@ -1,0 +1,20 @@
+{
+  "_agentkit": {
+    "compatible": [
+      "claude"
+    ],
+    "tags": [
+      "deepflow",
+      "test",
+      "develop"
+    ],
+    "type": "skill"
+  },
+  "author": {
+    "name": "knew-inventai"
+  },
+  "description": "\u8b93Agent\u53ef\u4ee5\u900f\u904e./kubeops.sh test\u53bb\u57f7\u884cbackend\u6e2c\u8a66",
+  "license": "MIT",
+  "name": "deepflow-backend-test",
+  "version": "1.0.0"
+}
