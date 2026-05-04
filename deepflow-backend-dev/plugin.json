@@ -1,0 +1,19 @@
+{
+  "name": "deepflow-backend-dev",
+  "version": "1.0.0",
+  "description": "讓Agent在deepflow開發時可以自動調用backend-devsapce作為runtime",
+  "author": {
+    "name": "knew-inventai"
+  },
+  "license": "MIT",
+  "_agentkit": {
+    "type": "skill",
+    "tags": [
+      "deepflow",
+      "develop"
+    ],
+    "compatible": [
+      "claude"
+    ]
+  }
+}
