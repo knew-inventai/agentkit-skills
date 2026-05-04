@@ -1,0 +1,20 @@
+{
+  "name": "deepflow-backend-test",
+  "version": "1.0.0",
+  "description": "讓Agent可以透過./kubeops.sh test去執行backend測試",
+  "author": {
+    "name": "knew-inventai"
+  },
+  "license": "MIT",
+  "_agentkit": {
+    "type": "skill",
+    "tags": [
+      "deepflow",
+      "test",
+      "develop"
+    ],
+    "compatible": [
+      "claude"
+    ]
+  }
+}
