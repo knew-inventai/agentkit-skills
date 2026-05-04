@@ -21,6 +21,7 @@ repos:
     rev: 0.7.21
     hooks:
       - id: mdformat
+        exclude: 'SKILL\.md$'
 
   # Python linting for scripts/
   - repo: https://github.com/astral-sh/ruff-pre-commit

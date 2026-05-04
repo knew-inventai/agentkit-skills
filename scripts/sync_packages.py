@@ -50,8 +50,8 @@ def main() -> None:
 
     changed_file = Path(sys.argv[1]) if len(sys.argv) > 1 else None
     if changed_file and changed_file.exists():
-        lines = [l.strip() for l in changed_file.read_text().splitlines() if l.strip()]
-        paths = [Path(l) for l in lines]
+        lines = [line.strip() for line in changed_file.read_text().splitlines() if line.strip()]
+        paths = [Path(line) for line in lines]
     else:
         paths = []
 
