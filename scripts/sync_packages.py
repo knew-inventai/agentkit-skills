@@ -9,6 +9,7 @@ and POSTs each to the Worker /sync endpoint.
 import json
 import os
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -41,6 +42,26 @@ def sync_package(
             raise RuntimeError(f"HTTP {resp.status}")
 
 
+def delete_package(
+    worker_url: str, secret: str, pkg_type: str, name: str
+) -> None:
+    req = urllib.request.Request(
+        f"{worker_url}/packages/{pkg_type}/{name}",
+        headers={
+            "Authorization": f"Bearer {secret}",
+            "User-Agent": "agentkit-sync/1.0",
+        },
+        method="DELETE",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            if resp.status not in (200, 404):
+                raise RuntimeError(f"HTTP {resp.status}")
+    except urllib.error.HTTPError as e:
+        if e.code != 404:
+            raise
+
+
 def main() -> None:
     worker_url = os.environ["WORKER_URL"].rstrip("/")
     secret = os.environ["SYNC_SECRET"]
@@ -71,7 +92,13 @@ def main() -> None:
             continue
         manifest_path = Path(name) / "plugin.json"
         if not manifest_path.exists():
-            print(f"SKIP {name}: plugin.json not found")
+            print(f"DELETE {name}: plugin.json removed")
+            try:
+                delete_package(worker_url, secret, pkg_type, name)
+                print(f"OK (deleted) {name}")
+            except Exception as e:
+                print(f"ERROR deleting {name}: {e}", file=sys.stderr)
+                errors.append(name)
             continue
         try:
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
