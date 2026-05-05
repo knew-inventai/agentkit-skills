@@ -54,9 +54,7 @@ def delete_package(
         method="DELETE",
     )
     try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            if resp.status not in (200, 404):
-                raise RuntimeError(f"HTTP {resp.status}")
+        urllib.request.urlopen(req, timeout=15)
     except urllib.error.HTTPError as e:
         if e.code != 404:
             raise
