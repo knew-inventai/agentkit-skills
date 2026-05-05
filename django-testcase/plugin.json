@@ -1,0 +1,19 @@
+{
+  "_agentkit": {
+    "compatible": [
+      "claude"
+    ],
+    "tags": [
+      "deepflow",
+      "develop"
+    ],
+    "type": "skill"
+  },
+  "author": {
+    "name": "knew-inventai"
+  },
+  "description": "專注於撰寫django框架的單元測試，注重測試品質，只撰寫最少且必要的測試項目",
+  "license": "MIT",
+  "name": "django-testcase",
+  "version": "1.0.0"
+}
