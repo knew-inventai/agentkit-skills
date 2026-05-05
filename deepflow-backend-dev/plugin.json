@@ -12,7 +12,7 @@
   "author": {
     "name": "knew-inventai"
   },
-  "description": "\u8b93Agent\u5728deepflow\u958b\u767c\u6642\u53ef\u4ee5\u81ea\u52d5\u8abf\u7528backend-devsapce\u4f5c\u70baruntime",
+  "description": "讓Agent在deepflow開發時可以自動調用backend-devsapce作為runtime",
   "license": "MIT",
   "name": "deepflow-backend-dev",
   "version": "1.0.0"

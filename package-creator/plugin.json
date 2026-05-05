@@ -18,7 +18,7 @@
     "email": "knew@chtinventai.com",
     "name": "knew-inventai"
   },
-  "description": "\u5f15\u5c0e\u4f7f\u7528\u8005\u5c07\u73fe\u6709\u5167\u5bb9\u5c01\u88dd\u6210 AgentKit \u53ef\u63a5\u53d7\u7684\u683c\u5f0f\uff08plugin.json + \u4e3b\u9ad4\u6a94\u6848\uff09\uff0c\u4e26\u7522\u51fa\u53ef\u76f4\u63a5\u63d0\u4ea4 PR \u7684\u5b8c\u6574\u76ee\u9304\u7d50\u69cb",
+  "description": "引導使用者將現有內容封裝成 AgentKit 可接受的格式（plugin.json + 主體檔案），並產出可直接提交 PR 的完整目錄結構",
   "license": "MIT",
   "name": "package-creator",
   "version": "1.0.0"
