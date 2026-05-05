@@ -24,6 +24,12 @@
       "version": "1.0.0"
     },
     {
+      "name": "django-testcase",
+      "source": "./django-testcase",
+      "description": "專注於撰寫django框架的單元測試，注重測試品質，只撰寫最少且必要的測試項目",
+      "version": "1.0.0"
+    },
+    {
       "name": "hello-world",
       "source": "./hello-world",
       "description": "CI 驗證測試用 skill，將於 PR 通過後刪除",
