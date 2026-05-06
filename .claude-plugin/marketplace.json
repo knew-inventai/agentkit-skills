@@ -42,12 +42,6 @@
       "version": "1.0.0"
     },
     {
-      "name": "prompt-designer",
-      "source": "./prompt-designer",
-      "description": "引導使用者依照 prompt engineering 最佳實踐設計高品質、可重用的 Prompt 模板",
-      "version": "1.0.0"
-    },
-    {
       "name": "skill-creator",
       "source": "./skill-creator",
       "description": "引導使用者從零設計並撰寫一個符合 AgentKit 規範的 Skill",
