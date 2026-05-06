@@ -6,12 +6,6 @@
   "description": "Inventai AI Skill 集合",
   "plugins": [
     {
-      "name": "code-reviewer",
-      "source": "./code-reviewer",
-      "description": "自動 code review，找出潛在 bug、安全問題與可讀性改善點",
-      "version": "1.0.0"
-    },
-    {
       "name": "deepflow-backend-dev",
       "source": "./deepflow-backend-dev",
       "description": "讓Agent在deepflow開發時可以自動調用backend-devsapce作為runtime",
