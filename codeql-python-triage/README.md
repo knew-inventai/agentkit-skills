@@ -89,7 +89,6 @@ codeql-python-triage/
 └── assets/
     ├── SECURITY_SUPPRESSIONS-template.md  # repo 根目錄 suppression index 模板
     ├── barrierModel-entry-template.yml    # 新增 barrier 的 YAML 模板
-    ├── pr-body-template.zh-TW.md          # 繁體中文 PR 描述模板
     └── lgtm-comment-template.py           # 三段式 suppression 註解模板
 ```
 

@@ -106,7 +106,7 @@ Defer to the **project's own conventions** wherever they differ from these defau
    - Base branch: the repo's default (`git remote show origin | grep 'HEAD branch'`) unless memory overrides
 3. **Permission rule** (universal): never run `gh pr create` (or push that triggers a PR) without the user's explicit go-ahead **per PR**. Staging files is fine. Committing is **not** fine without explicit say-so.
 
-If `assets/pr-body-template.zh-TW.md` matches the user's preferred PR language, use it; otherwise write a body that mirrors the repo's `pull_request_template.md` structure.
+Write the PR body to mirror the repo's `.github/pull_request_template.md` structure (sections, language, tone). If no template exists, use plain sections: 變動目的 / 影響的檔案 / 修法與分類 / 驗證 / 風險 / 後續 (or the English equivalents) — matched to whatever language the rest of the repo's PRs use.
 
 ## Common pitfalls (debt from real past sessions)
 
@@ -142,5 +142,4 @@ Load these into context only when needed:
 
 - `assets/SECURITY_SUPPRESSIONS-template.md` — repo-root index of all live suppressions.
 - `assets/barrierModel-entry-template.yml` — fill-in template for `.github/codeql/extensions/*.yml`.
-- `assets/pr-body-template.zh-TW.md` — Traditional Chinese PR body (one of several language options; use only when the user's PR convention is zh-TW).
 - `assets/lgtm-comment-template.py` — 3-field suppression comment block (Reason / Reviewer / Re-audit if).

@@ -1,0 +1,37 @@
+# Template for adding a barrier entry to .github/codeql/extensions/<your-name>-sanitizers.yml
+#
+# Only valid for Level 1 rules. Run audit_query.sh first to confirm the target
+# rule has a SanitizerFromModel class — otherwise these rows are silently ignored.
+#
+# Format: ["<root-package>", "<api-graph-path>", "<barrier-kind>"]
+#
+# root-package: the Python top-level package importable from the project root
+# api-graph-path: Member[...] chain from package root to the function whose
+#                 return value should be trusted as a barrier
+# barrier-kind: must match the kind string the Customizations.qll's
+#               SanitizerFromModel uses (e.g., "path-injection",
+#               "command-injection", "url-redirection",
+#               "unsafe-deserialization")
+
+extensions:
+  - addsTo:
+      pack: codeql/python-all
+      extensible: barrierModel
+    data:
+      # Example: a path-injection barrier on a validator returning Path
+      - ["<your-package>", "Member[utils].Member[path_validators].Member[<func>].ReturnValue", "path-injection"]
+
+      # Example: a command-injection barrier on a string-returning validator
+      - ["<your-package>", "Member[utils].Member[command_validators].Member[<func>].ReturnValue", "command-injection"]
+
+      # If the validator also exists in a separate lower-layer package (because
+      # the lower layer can't depend on the upper one), declare both — same
+      # validator function, two import paths.
+      - ["<lower-layer-package>", "Member[utils].Member[path_validators].Member[<func>].ReturnValue", "path-injection"]
+
+# After adding rows:
+# 1. Verify the validator raises ValueError on all known attack payloads (unit tests)
+# 2. Run `scripts/analyze.sh /tmp/codeql-db-py codeql/python-queries:codeql-suites/python-code-scanning.qls`
+# 3. Confirm the target rule's count dropped at the call sites you intended
+# 4. Confirm no NEW alerts appeared elsewhere (broadening the trust contract by accident)
+# 5. Ensure .github/workflows/codeql.yml has packs.python: ./.github/codeql so GitHub-side runs see this too
