@@ -1,6 +1,7 @@
 # Known Rules Ledger
 
 Running classification of every CodeQL Python rule the user / team has audited so far. Updated when:
+
 - A new rule appears and `audit_query.sh` is run on it
 - A pack upgrade is detected by `check_pack_version.sh`
 - A reviewer overrides an audit verdict
@@ -9,7 +10,7 @@ Running classification of every CodeQL Python rule the user / team has audited s
 
 **Pack versions for current entries**: codeql/python-all/7.1.0, codeql/python-queries/1.8.2 (CLI 2.25.4)
 
----
+______________________________________________________________________
 
 | Rule | Level | Last audit | Notes |
 |---|---|---|---|
@@ -22,7 +23,7 @@ Running classification of every CodeQL Python rule the user / team has audited s
 | `py/incomplete-url-substring-sanitization` | TBD | — | Common fix: regex with explicit hostname boundary (`r"https://example\.com(?:[/\s]|$)"`) instead of bare `"https://example.com" in s`. |
 | `py/overly-large-range` | TBD | — | Common fix for emoji filters: replace supplementary-plane regex character class with an explicit codepoint-range list + a char-by-char check (regex character classes covering the full supplementary plane sweep up legitimate CJK extension ranges). |
 
----
+______________________________________________________________________
 
 ## Append rule for `audit_query.sh --write`
 
@@ -34,7 +35,7 @@ When run with `--write`, the script appends a single line in this format:
 
 Review and edit by hand to fill in the **Notes** column with gotchas and any project-specific links. The script is intentionally conservative — it never overwrites an existing row.
 
----
+______________________________________________________________________
 
 ## Source pack provenance
 

@@ -80,11 +80,11 @@ The `packs:` block is what makes GitHub-side CodeQL load your data extensions. *
 Validators wired into `barrierModel` are the trust contract. Any change should:
 
 1. Keep existing unit tests passing
-2. Still raise on every adversarial payload — at minimum:
+1. Still raise on every adversarial payload — at minimum:
    - Path traversal: `..` segment, `\x00`, leading `/`
    - Option injection: leading `-` for arg-style values
    - Log poisoning: control chars `\x00`–`\x1f`, `\x7f`
-3. Be reviewed in sync with the `.github/codeql/extensions/*.yml` row — adding a new function to the YAML widens the trust surface
+1. Be reviewed in sync with the `.github/codeql/extensions/*.yml` row — adding a new function to the YAML widens the trust surface
 
 ## Workflow split (recommended)
 

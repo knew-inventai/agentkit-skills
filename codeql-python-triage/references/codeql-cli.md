@@ -3,6 +3,7 @@
 ## Install
 
 macOS (verified):
+
 ```bash
 brew install codeql
 codeql version                    # 2.25.4 at time of writing
@@ -11,6 +12,7 @@ codeql version                    # 2.25.4 at time of writing
 The Homebrew formula installs the CLI binary. Pack downloads happen on first use and live under `~/.codeql/packages/`.
 
 Pull the Python packs explicitly:
+
 ```bash
 codeql pack download codeql/python-all
 codeql pack download codeql/python-queries
@@ -19,6 +21,7 @@ codeql pack download codeql/python-queries
 ## Database creation
 
 For Python projects (no compilation):
+
 ```bash
 codeql database create /tmp/codeql-db-py \
   --language=python \
@@ -34,6 +37,7 @@ Use `scripts/build_db.sh` instead of remembering the flags.
 Two common modes:
 
 **Single query** (fast, but does NOT load `AlertSuppression.ql`):
+
 ```bash
 codeql database analyze /tmp/codeql-db-py \
   codeql/python-queries:Security/CWE-022/PathInjection.ql \
@@ -41,6 +45,7 @@ codeql database analyze /tmp/codeql-db-py \
 ```
 
 **Full suite** (slower, loads suppressions — REQUIRED for `# lgtm` verification):
+
 ```bash
 codeql database analyze /tmp/codeql-db-py \
   codeql/python-queries:codeql-suites/python-code-scanning.qls \

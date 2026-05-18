@@ -10,7 +10,7 @@ The CodeQL packs this taxonomy was built against:
 
 If `check_pack_version.sh` reports drift, re-audit before trusting these.
 
----
+______________________________________________________________________
 
 ## Level 1 — query accepts external `barrierModel` YAML
 
@@ -36,7 +36,7 @@ The presence of `class SanitizerFromModel extends Sanitizer` (or an equivalent c
 
 **Caveat**: even on Level 1 queries, the validator's *internal* code path (e.g., the `Path.resolve()` call inside a `resolve_under` helper) still gets flagged — CodeQL can't tell the helper from arbitrary user code. The `barrierModel` only blocks the helper's *return value* from being flagged at downstream callers. The validator's own internals will keep showing up in the alert list; treat those as inherent FPs (UI dismiss or `# lgtm[]`).
 
----
+______________________________________________________________________
 
 ## Level 2 — abstract Sanitizer with no concrete subclass
 
@@ -60,8 +60,8 @@ The class exists but nothing populates it. Adding `barrierModel` YAML for these 
 **What works for Level 2**:
 
 1. **Inline suppression**: `# lgtm[py/<rule>]` end-of-line. CodeQL's `AlertSuppression.ql` handles this — but you must verify by running the **full** `codeql-suites/python-code-scanning.qls`, not a single `.ql`. See `references/codeql-cli.md`.
-2. **Rename the source variable**. Sources are heuristic-based (variable names containing `password` / `api_key` / `secret` / `token` etc., matched via `SensitiveDataSource`'s `sensitiveString` regex). Rename and the heuristic stops triggering.
-3. **Remove the data flow**: don't store the value anywhere CodeQL sees as a sink. For `clear-text-storage`, the sinks are `FileSystemWriteAccess.getADataNode()` and `Http::Server::CookieWrite.getValueArg()` — refactor to use session ids, server-side storage, etc.
+1. **Rename the source variable**. Sources are heuristic-based (variable names containing `password` / `api_key` / `secret` / `token` etc., matched via `SensitiveDataSource`'s `sensitiveString` regex). Rename and the heuristic stops triggering.
+1. **Remove the data flow**: don't store the value anywhere CodeQL sees as a sink. For `clear-text-storage`, the sinks are `FileSystemWriteAccess.getADataNode()` and `Http::Server::CookieWrite.getValueArg()` — refactor to use session ids, server-side storage, etc.
 
 **What doesn't work**:
 
@@ -70,7 +70,7 @@ The class exists but nothing populates it. Adding `barrierModel` YAML for these 
 - `barrierModel` YAML — no consumer class
 - Custom regex / allowlist sanitizers — same
 
----
+______________________________________________________________________
 
 ## Level 3 — framework model in `Stdlib.qll` ignores the natural kwarg / hint
 
@@ -99,7 +99,7 @@ class HashlibDataPassedToHashClass extends HashlibGenericHashOperation {
 
 **Implication**: Level 3 rules need either a CodeQL pack upgrade (when upstream eventually models the kwarg), a custom `.qll` override (high effort), or the same fixes as Level 2 (suppression / refactor / rename).
 
----
+______________________________________________________________________
 
 ## Quick decision flow
 
@@ -120,7 +120,7 @@ Have a CodeQL alert?
       └─ "Verdict: Level 3" → use inline suppression (track pack upgrade in ledger)
 ```
 
----
+______________________________________________________________________
 
 ## Pre-classified rules (snapshot 2026-05-18)
 
