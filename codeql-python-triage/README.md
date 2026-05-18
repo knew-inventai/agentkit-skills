@@ -123,11 +123,13 @@ bash $SKILL/scripts/check_pack_version.sh | grep -q 'codeql/python-all'
 ## 範圍與不做
 
 **做**:
+
 - Python CodeQL 規則,跨任何專案皆適用
 - triage / 分類 / 驗證 / PR 五階段工作流
 - 自動偵測專案的 data-extension pack(任何 `.github/codeql/qlpack.yml`)
 
 **不做**(留給未來其他 skill):
+
 - JavaScript / TypeScript / Java / Go 的 CodeQL(規則 taxonomy 與 Customizations.qll 路徑都不同)
 - 寫自製 `.qll` Sanitizer 來把 Level 2 規則升級成 Level 1(過於侵入)
 - Trivy 或其他非 CodeQL 的 scanner
@@ -135,6 +137,7 @@ bash $SKILL/scripts/check_pack_version.sh | grep -q 'codeql/python-all'
 ## 設計權威來源
 
 本 skill 撰寫時對照的 pack 版本:
+
 - `codeql/python-all` 7.1.0
 - `codeql/python-queries` 1.8.2
 - CodeQL CLI 2.25.4
