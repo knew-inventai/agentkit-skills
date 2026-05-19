@@ -6,6 +6,12 @@
   "description": "Inventai AI Skill 集合",
   "plugins": [
     {
+      "name": "codeql-python-triage",
+      "source": "./codeql-python-triage",
+      "description": "把 CodeQL Python alert 從盤點到清掉的完整流程,內建 Level 1/2/3 分類器,避免每次都白做工。",
+      "version": "1.0.1"
+    },
+    {
       "name": "deepflow-backend-dev",
       "source": "./deepflow-backend-dev",
       "description": "讓Agent在deepflow開發時可以自動調用backend-devsapce作為runtime",
