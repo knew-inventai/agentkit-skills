@@ -1,0 +1,25 @@
+{
+  "_agentkit": {
+    "compatible": [
+      "claude"
+    ],
+    "tags": [
+      "codeql",
+      "python",
+      "security",
+      "static-analysis",
+      "sarif",
+      "code-scanning",
+      "github",
+      "triage"
+    ],
+    "type": "skill"
+  },
+  "author": {
+    "name": "wes-chtinventai"
+  },
+  "description": "把 CodeQL Python alert 從盤點到清掉的完整流程,內建 Level 1/2/3 分類器,避免每次都白做工。",
+  "license": "MIT",
+  "name": "codeql-python-triage",
+  "version": "1.0.1"
+}

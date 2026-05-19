@@ -42,9 +42,7 @@ def sync_package(
             raise RuntimeError(f"HTTP {resp.status}")
 
 
-def delete_package(
-    worker_url: str, secret: str, pkg_type: str, name: str
-) -> None:
+def delete_package(worker_url: str, secret: str, pkg_type: str, name: str) -> None:
     req = urllib.request.Request(
         f"{worker_url}/packages/{pkg_type}/{name}",
         headers={
